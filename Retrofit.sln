@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retrofit", "Retrofit\Retrofit.csproj", "{7475B416-068B-414F-99C7-363D4F3BC8EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7475B416-068B-414F-99C7-363D4F3BC8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7475B416-068B-414F-99C7-363D4F3BC8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7475B416-068B-414F-99C7-363D4F3BC8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7475B416-068B-414F-99C7-363D4F3BC8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {759D5C4E-3DB6-4C51-8A83-D0C2FBCDA1CC}
+	EndGlobalSection
+EndGlobal
