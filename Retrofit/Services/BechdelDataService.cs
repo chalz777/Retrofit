@@ -11,7 +11,7 @@ using System.IO;
 namespace Retrofit.Services
 { 
 
-internal class BechdelDataService
+public class BechdelDataService
 {
   private readonly ILogger<BechdelDataService> _logger;
   private readonly IConfiguration _config;
@@ -78,7 +78,7 @@ internal class BechdelDataService
     return GetFilmResult(qry, page, pageSize);
   }
 
-  FilmResult GetFilmResult(IOrderedEnumerable<Film> query, int page, int pageSize)
+        public FilmResult GetFilmResult(IOrderedEnumerable<Film> query, int page, int pageSize)
   {
     var count = query.Count();
     var pageCount = (int)Math.Ceiling(((double)count / (double)pageSize));
@@ -89,7 +89,7 @@ internal class BechdelDataService
     return new FilmResult(count, pageCount, page, results);
   }
 
-  protected async Task<IEnumerable<Film>> LoadAsync()
+  public async Task<IEnumerable<Film>> LoadAsync()
   {
     if (_data is null)
     {
