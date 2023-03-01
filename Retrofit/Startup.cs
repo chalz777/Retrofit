@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.SpaServices;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,8 +30,29 @@ namespace Retrofit
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddRazorPages();
+            //services.AddSingleton<BechdelDataService>();
+            //services.AddCors();
             services.AddControllersWithViews();
+
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "wwwroot/dist";
+            //});
         }
+        //var builder = WebApplication.CreateBuilder(args);
+
+        //        // Add services to the container.
+        //        builder.Services.AddRazorPages();
+
+        //builder.Services.AddSingleton<BechdelDataService>();
+
+        //        builder.Services.AddCors();
+
+        //        var app = builder.Build();
+
+        //                app.UseStaticFiles();
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -48,6 +70,9 @@ namespace Retrofit
 
             //builder.Services.AddSingleton<BechdelDataService>();
             app.UseHttpsRedirection();
+
+            //app.UseDefaultFiles();
+  
             app.UseStaticFiles();
 
             app.UseCors(cfg => cfg.AllowAnyOrigin());
@@ -60,11 +85,11 @@ namespace Retrofit
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute(
-                //    name: "default",
-                //    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapFallbackToPage("/FilmList/{*path}", "/FilmList");
+                //endpoints.MapFallbackToPage("/FilmList/{*path}", "/FilmList");
 
                 endpoints.MapGet("api/films", async context =>
                 {
@@ -85,7 +110,17 @@ namespace Retrofit
                 //}).Produces<IEnumerable<Film>>(contentType: "application/json").Produces(404).ProducesProblem(500);
             });
 
-            
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
+
+            //    //if (env.IsDevelopment())
+            //    //{
+            //    //    spa.UseViteDevelopmentServer();
+            //    //}
+            //});
+
+
 
             //app.MapGet("api/films", async (BechdelDataService ds, int? page, int? pageSize) =>
             //{
@@ -101,7 +136,7 @@ namespace Retrofit
             //   cfg.UseProxyToSpaDevelopmentServer("http://localhost:5000");
             // });
 
-           
+
 
             //        app.Run();
         }
