@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "prestart": "node aspnetcore-https",
+    "start": "run-script-os",
+    "start:windows": "ng serve --port 44483 --ssl --ssl-cert \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.pem\" --ssl-key \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.key\"",
+    "start:default": "ng serve --port 44483 --ssl --ssl-cert \"$HOME/.aspnet/https/${npm_package_name}.pem\" --ssl-key \"$HOME/.aspnet/https/${npm_package_name}.key\"",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -13,6 +17,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
-    "vite": "^4.0.0"
+    "vite": "^4.0.0",
+    "vite-plugin-mkcert": "^1.13.3"
   }
 }

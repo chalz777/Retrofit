@@ -30,20 +30,17 @@ namespace Retrofit
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddRazorPages();
-            //services.AddSingleton<BechdelDataService>();
-            //services.AddCors();
+            services.AddRazorPages();
+            services.AddSingleton<BechdelDataService>();
+            services.AddCors();
             services.AddControllersWithViews();
 
-            //services.AddSpaStaticFiles(configuration =>
-            //{
-            //    configuration.RootPath = "wwwroot/dist";
-            //});
-        }
-        //var builder = WebApplication.CreateBuilder(args);
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "wwwroot/client";
+            });
+        }       
 
-        //        // Add services to the container.
-        //        builder.Services.AddRazorPages();
 
         //builder.Services.AddSingleton<BechdelDataService>();
 
@@ -67,11 +64,10 @@ namespace Retrofit
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            //builder.Services.AddSingleton<BechdelDataService>();
+                        
             app.UseHttpsRedirection();
 
-            //app.UseDefaultFiles();
+            app.UseDefaultFiles();
   
             app.UseStaticFiles();
 
@@ -79,16 +75,36 @@ namespace Retrofit
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             //app.MapRazorPages();
 
+
+            if (env.IsDevelopment())
+            {
+                app.UseSpa(spa =>
+                {
+                    spa.Options.SourcePath = "client";
+                    spa.Options.DevServerPort = 3399;
+
+                    if (env.IsDevelopment())
+                    {
+                        spa.UseProxyToSpaDevelopmentServer("https://127.0.0.1:3399/"); //https://localhost:3399
+                        //.UseViteDevelopmentServer();
+                    }
+                });
+            }
+            //else 
+            //    app.Ma
+
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
+                endpoints.MapFallbackToFile("index.html");
                 //endpoints.MapFallbackToPage("/FilmList/{*path}", "/FilmList");
 
                 endpoints.MapGet("api/films", async context =>
@@ -108,17 +124,7 @@ namespace Retrofit
                 //    if (data.Results is null) return Results.NotFound();
                 //    return Results.Ok(data);
                 //}).Produces<IEnumerable<Film>>(contentType: "application/json").Produces(404).ProducesProblem(500);
-            });
-
-            //app.UseSpa(spa =>
-            //{
-            //    spa.Options.SourcePath = "ClientApp";
-
-            //    //if (env.IsDevelopment())
-            //    //{
-            //    //    spa.UseViteDevelopmentServer();
-            //    //}
-            //});
+            });       
 
 
 
