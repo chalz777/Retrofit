@@ -6,7 +6,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <section>
     <div class="wrapper">
-      <h1>We changed it</h1>
+      <h1>Is this where We changed it</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/films">Films</RouterLink>
