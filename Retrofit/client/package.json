@@ -1,23 +1,108 @@
 {
-  "name": "client",
-  "version": "0.0.0",
+  "name": "vite-project",
   "private": true,
+  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  }, 
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "index.d.ts",  
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],  
   "scripts": {
     "dev": "vite",
-    "prestart": "node aspnetcore-https",
-    "start": "run-script-os",
-    "start:windows": "ng serve --port 44483 --ssl --ssl-cert \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.pem\" --ssl-key \"%APPDATA%\\ASP.NET\\https\\%npm_package_name%.key\"",
-    "start:default": "ng serve --port 44483 --ssl --ssl-cert \"$HOME/.aspnet/https/${npm_package_name}.pem\" --ssl-key \"$HOME/.aspnet/https/${npm_package_name}.key\"",
-    "build": "vite build",
+    "serve": "serve dist",
+    "tdev": "esno scripts/dev.ts",
+    "tbuild": "esno scripts/build.ts",
+    "prepublishOnly": "npm run tbuild",
+    "swbuild": "cross-env DEBUG=vite-sandbox:* BASE_URL=/ SOURCE_MAP=true NODE_ENV=development CLAIMS=true SW=true vite build",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
+  "peerDependencies": {
+    "vite": "^3.1.0",
+    "workbox-build": "^6.5.4",
+    "workbox-window": "^6.5.4"
+  },
   "dependencies": {
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@vueuse/core": "^9.2.0",
+    "@vueuse/shared": "^9.2.0",
+    "builtin-modules": "^3.3.0",
+    "crypto-random-string": "^2.0.0",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "file-system": "^2.2.2",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "pretty-bytes": "^6.0.0",
+    "rollup": "^2.79.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-dynamic-import-variables": "^1.1.0",
+    "rollup-plugin-node-externals": "^5.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "url": "^0.11.0",
+    "vite-plugin-commonjs": "^0.6.1",
+    "vite-plugin-commonjs-externals": "^0.1.1",
+    "vite-plugin-inspect": "^0.7.12",
+    "vite-plugin-pwa": "^0.14.1",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.5",
+    "workbox-build": "^6.5.4",
+    "workbox-window": "^6.5.4"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.26.3",
+    "@antfu/ni": "^0.18.0",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@types/debug": "^4.1.7",
+    "@types/node": "^18.11.18",
+    "@types/prompts": "^2.4.0",
+    "@types/react": "^18.0.18",
+    "@types/workbox-build": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vueuse/core": "^9.2.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.23.0",
+    "esno": "0.16.3",
+    "fast-glob": "^3.2.12",
+    "https-localhost": "^4.7.1",
+    "kolorist": "^1.5.1",
+    "preact": "^10.10.6",
+    "prompts": "^2.4.2",
+    "react": "^18.2.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.79.0",
+    "solid-js": "^1.5.4",
+    "svelte": "^3.50.0",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
+    "tsup": "^6.2.3",
+    "typescript": "^4.9.3",
     "vite": "^4.0.0",
-    "vite-plugin-mkcert": "^1.13.3"
+    "vue": "^3.2.38",
+    "vue-tsc": "^1.0.11",
+    "workbox-core": "^6.5.4",
+    "workbox-precaching": "^6.5.4",
+    "workbox-routing": "^6.5.4",
+    "workbox-window": "^6.5.4"
   }
 }
