@@ -85,7 +85,7 @@ namespace Retrofit
                 app.UseSpa(spa =>
                 {
                     spa.Options.SourcePath = "client";
-                    //spa.Options.DevServerPort = 3399;
+                    spa.Options.DevServerPort = 443;
 
                     if (env.IsDevelopment())
                     {

@@ -27,8 +27,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "serve": "serve dist",
-   
+    "serve": "serve ../wwwroot/client",
+
     "tdev": "esno scripts/dev.ts",
     "tbuild": "esno scripts/build.ts",
     "prepublishOnly": "npm run tbuild",
