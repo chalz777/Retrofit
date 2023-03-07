@@ -1,0 +1,1 @@
+(function(){"use strict";const t="pong",l="development";let e=1;self.onmessage=s=>{s.data==="ping"?self.postMessage({msg:`${t} - ${e++}`,mode:l}):s.data==="clear"&&(e=1,self.postMessage({msg:null,mode:null}))}})();

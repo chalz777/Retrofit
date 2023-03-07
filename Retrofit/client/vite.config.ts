@@ -119,5 +119,22 @@ export default defineConfig({
     vue(),
     VitePWA(pwaOptions),   
     replace(replaceOptions), 
-  ],
+    ],
+    server: {
+        port: 3399,
+        https: true,
+        strictPort: true,
+        //proxy: {
+        //    '/api': {
+        //        target: 'https://localhost:7153',
+        //        changeOrigin: true,
+        //        secure: false,
+        //        rewrite: (path) => path.replace(/^\/api/, '/api')
+        //    }
+        //}
+    },
+    build: {
+        outDir: "../wwwroot/client",
+        emptyOutDir: true
+    },
 })

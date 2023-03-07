@@ -85,11 +85,11 @@ namespace Retrofit
                 app.UseSpa(spa =>
                 {
                     spa.Options.SourcePath = "client";
-                    spa.Options.DevServerPort = 3399;
+                    //spa.Options.DevServerPort = 3399;
 
                     if (env.IsDevelopment())
                     {
-                        spa.UseProxyToSpaDevelopmentServer("https://127.0.0.1:3399/"); //https://localhost:3399
+                        spa.UseProxyToSpaDevelopmentServer("https://localhost"); //https://localhost:3399
                         //.UseViteDevelopmentServer();
                     }
                 });
