@@ -134,7 +134,7 @@ export default defineConfig({
         //}
     },
     build: {
-        outDir: "../wwwroot/client",
+        outDir: "../wwwroot",
         emptyOutDir: true
     },
 })

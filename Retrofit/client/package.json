@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "serve": "serve ../wwwroot/client",
+    "serve": "serve ../wwwroot",
 
     "tdev": "esno scripts/dev.ts",
     "tbuild": "esno scripts/build.ts",
